@@ -42,6 +42,7 @@ package it.polito.tdp.indonumero;
 
 	    @FXML
 	    void HandleProva(ActionEvent event) {
+	    	;
 
 	    }
 
