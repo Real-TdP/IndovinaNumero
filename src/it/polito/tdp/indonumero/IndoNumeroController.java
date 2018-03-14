@@ -2,6 +2,7 @@
 package it.polito.tdp.indonumero;
 
 import java.net.URL;
+import java.util.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.collections.*;
@@ -12,8 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
 public class IndoNumeroController {
-	
-	ObservableList<?> diff =FXCollections.observableArrayList("Facile","Media","Difficile");
+
 
     @FXML
     private ResourceBundle resources;
@@ -25,7 +25,8 @@ public class IndoNumeroController {
     private HBox boxNew;
 
     @FXML
-    private ChoiceBox<?> choiceDiff;
+    private ChoiceBox<String> choiceDiff;
+    
     
 
     @FXML
@@ -39,7 +40,6 @@ public class IndoNumeroController {
 
     @FXML
     void HandleNew(ActionEvent event) {
-    	
 
     }
 
@@ -61,6 +61,7 @@ public class IndoNumeroController {
         assert boxTent != null : "fx:id=\"boxTent\" was not injected: check your FXML file 'IndoNumero.fxml'.";
         assert txtProva != null : "fx:id=\"txtProva\" was not injected: check your FXML file 'IndoNumero.fxml'.";
         assert txtLog != null : "fx:id=\"txtLog\" was not injected: check your FXML file 'IndoNumero.fxml'.";
+        choiceDiff.getItems().addAll("Facile","Media","Difficile");
 
         
 
