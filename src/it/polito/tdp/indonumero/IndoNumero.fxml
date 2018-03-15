@@ -25,14 +25,14 @@
          <children>
             <HBox fx:id="boxNew" spacing="5.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#HandleNew" text="Nuova Paritta" />
+                  <Button fx:id="btnNew" mnemonicParsing="false" onAction="#HandleNew" text="Nuova Paritta" />
                   <ChoiceBox fx:id="choiceDiff" opacity="0.93" />
                   <Label text="Tentativi">
                      <HBox.margin>
                         <Insets left="30.0" />
                      </HBox.margin>
                   </Label>
-                  <ProgressBar prefWidth="200.0" progress="0.0" />
+                  <ProgressBar fx:id="barTent" prefWidth="200.0" progress="0.0" />
                </children>
                <VBox.margin>
                   <Insets />
@@ -41,7 +41,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <HBox fx:id="boxTent" alignment="CENTER" spacing="5.0">
+            <HBox fx:id="boxTent" alignment="CENTER" disable="true" spacing="5.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#HandleStop" text="Abbandona Partita" />
                   <Label text="Tentativo:" />
@@ -52,7 +52,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <TextArea fx:id="txtLog" mouseTransparent="true" prefColumnCount="20" />
+            <TextArea fx:id="txtLog" editable="false" mouseTransparent="true" prefColumnCount="20" />
          </children>
          <BorderPane.margin>
             <Insets />
