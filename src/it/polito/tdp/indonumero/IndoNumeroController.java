@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
@@ -38,6 +39,10 @@ public class IndoNumeroController {
     
     @FXML
     private ProgressBar barTent;
+    
+    @FXML
+    private CheckBox checkAssistita;
+
 
     @FXML
     private TextArea txtLog;
@@ -50,7 +55,10 @@ public class IndoNumeroController {
     		return;
     	}
     	this.newGame();
-    	p = new Partita(choiceDiff.getValue());
+    	if(checkAssistita.isSelected())
+    		p= new PartitaAssistita(choiceDiff.getValue());
+    	else
+    		p = new Partita(choiceDiff.getValue());
     	txtLog.appendText(p.newPart(choiceDiff.getValue()));
     	
     }
@@ -63,7 +71,7 @@ public class IndoNumeroController {
     			tent = Integer.parseInt(txtProva.getText());
     	}
     	catch(NumberFormatException ex) {
-    		txtLog.appendText("OOOOH NUMEROOOH\n");
+    		txtLog.appendText("Formato non valido\n");
     		return;
     	}
     	if(tent<1||tent>p.getNmax()) {
@@ -76,7 +84,7 @@ public class IndoNumeroController {
     	else if(result.compareTo("Hai perso, troppi tentativi.\n")==0)
     		this.reset();
     	
-    	barTent.setProgress((double)p.getTcorr()/p.getTmax());
+    	barTent.setProgress((double)p.getTcorr()/p.getTmax());  
     	txtLog.appendText(result+"\n");
 
     }
@@ -94,6 +102,7 @@ public class IndoNumeroController {
         assert boxTent != null : "fx:id=\"boxTent\" was not injected: check your FXML file 'IndoNumero.fxml'.";
         assert txtProva != null : "fx:id=\"txtProva\" was not injected: check your FXML file 'IndoNumero.fxml'.";
         assert txtLog != null : "fx:id=\"txtLog\" was not injected: check your FXML file 'IndoNumero.fxml'.";
+        assert checkAssistita != null : "fx:id=\"checkAssistita\" was not injected: check your FXML file 'IndoNumero.fxml'.";
         assert barTent != null : "fx:id=\"barTent\" was not injected: check your FXML file 'IndoNumero.fxml'.";
         choiceDiff.getItems().addAll("Facile","Media","Difficile");
 
@@ -103,11 +112,13 @@ public class IndoNumeroController {
     	boxTent.setDisable(false);
     	btnNew.setDisable(true);
     	choiceDiff.setDisable(true);
+    	checkAssistita.setDisable(true);
     }
     public void reset() {
     	boxTent.setDisable(true);
     	btnNew.setDisable(false);
     	choiceDiff.setDisable(false);
+    	checkAssistita.setDisable(false);
     	txtLog.clear();
     }
 }
