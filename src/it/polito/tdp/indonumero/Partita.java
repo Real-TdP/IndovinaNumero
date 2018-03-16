@@ -10,9 +10,9 @@ public class Partita {
 	protected int nSec;
 	protected List<Integer> numeri = new LinkedList<Integer>();
 	
-	public Partita(String diff) {
+	public Partita(String diff) {               //VALUTO DIFFICOLTA
 		Tcorr=0;
-		if(diff.compareTo("Facile")==0) {
+		if(diff.compareTo("Facile")==0) {   
 			Nmax=100;
 			Tmax=10;
 		}
